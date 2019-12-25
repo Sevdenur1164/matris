@@ -1,4 +1,4 @@
-#include <iostream>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      #include <iostream>
 #include <fstream>
 #include <cstring>
 #include <cmath>
@@ -21,9 +21,11 @@ class ogrenciler{
      int vize,kisasinav1,kisasinav2,odev,final;
 	 float ortalama;
 	 int derssayisi;
+	 string harfnotu;
      
    
 };
+
 
 
 
@@ -51,14 +53,19 @@ class personeller{
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 int main(int argc, char** argv) {
+		ofstream dosyaolustur("ogrenciler.txt",ios::app);
+	    dosyaolustur.close();
 	
+     	ofstream dosyaolustur2("personeller.txt",ios::app);
+     	dosyaolustur2.close();
+		
 	
 	
 	
 	do{
 		
 		
-		 ogrenciler o;
+		ogrenciler o;
 		
 		int secim;
 		
@@ -78,12 +85,7 @@ int main(int argc, char** argv) {
 		cin>>secim;
 		
 		
-		ofstream dosyaolustur("ogrenciler.txt",ios::app);
-	    dosyaolustur.close();
 	
-     	ofstream dosyaolustur2("personeller.txt",ios::app);
-     	dosyaolustur2.close();
-		
 		
 		
 		if(secim==1){
@@ -92,12 +94,13 @@ int main(int argc, char** argv) {
 		    cout<<endl;
 		    cout<<"Ogrencinin bilgilerini giriniz..."<<endl;
 		    
+		    
+		    cout<<"Ogencinin Tc kimlik numarasi : "<<endl;
+		    cin>>o.TCno;
 		    cout<<"Ogencinin adi : "<<endl;
 		    cin>>o.adi;
 		    cout<<"Ogencinin soyadi : "<<endl;
-		    cin>>o.soyadi;
-			cout<<"Ogencinin Tc kimlik numarasi : "<<endl;
-		    cin>>o.TCno;
+		    cin>>o.soyadi;	
 		    cout<<"Ogencinin okul numarasi : "<<endl;
 		    cin>>o.ogrencino;
 		    cout<<"Ogencinin dogum tarihi : "<<endl;
@@ -108,16 +111,20 @@ int main(int argc, char** argv) {
 		    cin>>o.kayittarihi;
 		    
 		    
+		    
+		    
+		    cout<<"Ogrencinin aldigi ders sayisini giriniz : "<<endl;
+		    cin>>o.derssayisi;
+		    
 		    dosyaolustur.open("ogrenciler.txt",ios::app);
 		
-		    dosyaolustur<<o.adi<<"  "<<o.soyadi<<"   Tc kimlik no : "<<o.TCno<<"  Okul numarasi : "<<o.ogrencino<<"\t Dogum tarihi : "<<o.dogumtarihi<<"  Bolumu : "<<o.bolumu<<"  Kayit tarihi : "<<o.kayittarihi<<"  ";
+		    dosyaolustur<<"\n"<<o.TCno<<"\t"<<o.adi<<"\t"<<o.soyadi<<"\t"<<o.ogrencino<<"\t"<<o.dogumtarihi<<"\t"<<o.bolumu<<"\t"<<o.kayittarihi<<"\t"<<o.derssayisi;
 		   
 		    dosyaolustur.close();
 		
 		    
 		   
-		    cout<<"Ogrencinin aldigi ders sayisini giriniz : "<<endl;
-		    cin>>o.derssayisi;
+		    
 		    
 		    for(int i=1;i<=o.derssayisi;i++)
 		    {
@@ -147,8 +154,8 @@ int main(int argc, char** argv) {
 		    		
 		    		
 		    		dosyaolustur.open("ogrenciler.txt",ios::app);
-		    		dosyaolustur<<"Ders adi : "<<o.dersadi<<"   Vize notu :"<<o.vize<<"   1.kisa sinav notu :"<<o.kisasinav1;
-		            dosyaolustur<<"   2.kisa sinav notu : "<<o.kisasinav2<<"   Odev notu : "<<o.odev<<"   Final notu : "<<o.final<<"   Ortalama : "<<o.ortalama;
+		    		dosyaolustur<<"\t"<<o.dersadi<<"\t"<<o.vize<<"\t"<<o.kisasinav1;
+		            dosyaolustur<<"\t"<<o.kisasinav2<<"\t"<<o.odev<<"\t"<<o.final<<"\t"<<o.ortalama;
 		    		dosyaolustur.close();
 		    		
 		    		
@@ -158,7 +165,7 @@ int main(int argc, char** argv) {
 		    		if(o.ortalama<=39.99&&o.ortalama>=0)
 		    		{
 		    		    dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : FF ";
+		                dosyaolustur<<"\tFF";
 		                dosyaolustur.close();
 		    			
 					}
@@ -166,50 +173,50 @@ int main(int argc, char** argv) {
 					else if(o.ortalama<=49.99&&o.ortalama>=40)
 					{
 						dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : FD ";
+		                dosyaolustur<<"\tFD";
 		                dosyaolustur.close();
 					}
 					
 					else if(o.ortalama<=54.99&&o.ortalama>=50)
 					{
 						dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : DD ";
+		                dosyaolustur<<"\tDD";
 		                dosyaolustur.close();
 					}
 					else if(o.ortalama<=65.99&&o.ortalama>=55)
 					{
 						dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : DC ";
+		                dosyaolustur<<"\tDC";
 		                dosyaolustur.close();
 					}
 					else if(o.ortalama<=70.99&&o.ortalama>=66)
 					{
 						dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : CC ";
+		                dosyaolustur<<"\tCC";
 		                dosyaolustur.close();
 					}
 					else if(o.ortalama<=74.99&&o.ortalama>=71)
 					{
 						dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : CB ";
+		                dosyaolustur<<"\tC";
 		                dosyaolustur.close();
 					}
 					else if(o.ortalama<=82.99&&o.ortalama>=75)
 					{
 						dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : BB ";
+		                dosyaolustur<<"\tBB";
 		                dosyaolustur.close();
 					}
 					else if(o.ortalama<=89.99&&o.ortalama>=83)
 					{
 						dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : BA ";
+		                dosyaolustur<<"\tBA";
 		                dosyaolustur.close();
 					}
 					else if(o.ortalama<=100&&o.ortalama>=90)
 					{
 						dosyaolustur.open("ogrenciler.txt",ios::app);
-		                dosyaolustur<<"  Harf notu : FF ";
+		                dosyaolustur<<"\tFF";
 		                dosyaolustur.close();
 					}
 				    
@@ -224,34 +231,36 @@ int main(int argc, char** argv) {
 		
 		 if(secim==2)
 		{
-			string isim;
+			string tcguncel;
 			
-			cout<<"Guncelleme yapmak istediginiz ogrencinin adini giriniz : ";
-			cin>>isim;
+			ifstream dosyaoku("ogrenciler.txt");
+			ofstream dosyaolustur("guncel.txt");
 			
-		   	 ifstream dosyaoku("ogrenciler.txt");
-			 ofstream dosyaolustur("guncel.txt");
+			cout<<"Guncelleme yapmak istediginiz ogrencinin TC kimlik numarasini giriniz : ";
+			cin>>tcguncel;
 			
-			   string ad,ad1;
+		   	 
+			   string TC1,TC2;
 			
 		       while(!dosyaoku.eof()){
 			   
 			      ogrenciler o1;
 			      
-			      getline(dosyaoku,ad);
-			      ad1=ad.substr(0,isim.length());
+			      getline(dosyaoku,TC1);
+			      TC2=TC1.substr(0,tcguncel.length());
 			      
-			      if(ad1==isim){
+			      if(TC2==tcguncel){
 			      	
 			      	cout<<endl;
 		            cout<<"Ogrencinin bilgilerini giriniz..."<<endl;
 		            
+		            
+		            cout<<"Ogencinin Tc kimlik numarasi : "<<endl;
+		            cin>>o1.TCno;
 		            cout<<"Ogencinin adi : "<<endl;
 		            cin>>o1.adi;
 		            cout<<"Ogencinin soyadi : "<<endl;
 		            cin>>o1.soyadi;
-					cout<<"Ogencinin Tc kimlik numarasi : "<<endl;
-		            cin>>o1.TCno;
 		            cout<<"Ogencinin okul numarasi : "<<endl;
 		            cin>>o1.ogrencino;
 		            cout<<"Ogencinin dogum tarihi : "<<endl;
@@ -262,18 +271,18 @@ int main(int argc, char** argv) {
 		            cin>>o1.kayittarihi;
 		    
 		    
-                  
+                   cout<<"Ogrencinin aldigi ders sayisini giriniz : "<<endl;
+		    cin>>o1.derssayisi;
 		    
-	        	  dosyaolustur<<o1.adi<<"  "<<o1.soyadi<<"Ogrencinin TC kimlik numarasi : "<<o1.TCno;
-		          dosyaolustur<<" OGrencinin okul numarasi : "<<o1.ogrencino<<" Ogrencinin dogum tarihi : "<<o1.dogumtarihi;
-		          dosyaolustur<<" Ogrencinin bolumu : "<<o1.bolumu<<" Ogrencinin kayit tarihi : "<<o1.kayittarihi;
+		    
+	        	  dosyaolustur<<"\t"<<o1.TCno<<"\t"<<o1.adi<<" \t"<<o1.soyadi;
+		          dosyaolustur<<"\t"<<o1.ogrencino<<"\t"<<o1.dogumtarihi;
+		          dosyaolustur<<"\t"<<o1.bolumu<<"\t"<<o1.kayittarihi<<"\t"<<o1.derssayisi;
 		       
 		
 		    
 		   
-		    cout<<"Ogrencinin aldigi ders sayisini giriniz : "<<endl;
-		    cin>>o1.derssayisi;
-		    
+		   
 		    for(int i=1;i<=o1.derssayisi;i++)
 		    {
 		    	
@@ -302,8 +311,8 @@ int main(int argc, char** argv) {
 		    		
 		    		
 		    	
-		    		dosyaolustur<<"Ders adi : "<<o1.dersadi<<"  Vize notu :"<<o1.vize<<"  1.kisa sinav notu :"<<o1.kisasinav1;
-		            dosyaolustur<<"  2.kisa sinav notu : "<<o1.kisasinav2<<"  Odev notu : "<<o1.odev<<"  Final notu : "<<o1.final<<"  Ortalama : "<<o1.ortalama;
+		    		dosyaolustur<<"\t"<<o1.dersadi<<"\t"<<o1.vize<<"\t"<<o1.kisasinav1;
+		            dosyaolustur<<"\t"<<o1.kisasinav2<<"\t"<<o1.odev<<"\t"<<o1.final<<"\t"<<o1.ortalama;
 		    	
 		    		
 		    		
@@ -313,7 +322,7 @@ int main(int argc, char** argv) {
 		    		if(o1.ortalama<=39.99&&o1.ortalama>=0)
 		    		{
 		    		    
-		                dosyaolustur<<"  Harf notu : FF "<<"\n"<<endl;
+		                dosyaolustur<<"\tFF  ";
 		               
 		    			
 					}
@@ -321,54 +330,54 @@ int main(int argc, char** argv) {
 					else if(o1.ortalama<=49.99&&o1.ortalama>=40)
 					{
 						
-		                dosyaolustur<<"  Harf notu : FD "<<"\n"<<endl;
+		                dosyaolustur<<"\tFD ";
 		             
 					}
 					
 					else if(o1.ortalama<=54.99&&o1.ortalama>=50)
 					{
 						
-		                dosyaolustur<<"  Harf notu : DD "<<"\n"<<endl;
+		                dosyaolustur<<"\tDD ";
 		                
 					}
 					else if(o1.ortalama<=65.99&&o1.ortalama>=55)
 					{
 						
-		                dosyaolustur<<"  Harf notu : DC "<<"\n"<<endl;
+		                dosyaolustur<<"\tDC ";
 		               
 					}
 					else if(o1.ortalama<=70.99&&o1.ortalama>=66)
 					{
 						
-		                dosyaolustur<<"  Harf notu : CC "<<"\n"<<endl;
+		                dosyaolustur<<"\tCC ";
 		              
 					}
 					else if(o1.ortalama<=74.99&&o1.ortalama>=71)
 					{
 						
-		                dosyaolustur<<"  Harf notu : CB "<<"\n"<<endl;
+		                dosyaolustur<<"\tCB ";
 		                
 					}
 					else if(o1.ortalama<=82.99&&o1.ortalama>=75)
 					{
 				
-		                dosyaolustur<<"  Harf notu : BB "<<"\n"<<endl;
+		                dosyaolustur<<"\tBB ";
 		               
 					}
 					else if(o1.ortalama<=89.99&&o1.ortalama>=83)
 					{
 					
-		                dosyaolustur<<"  Harf notu : BA "<<"\n"<<endl;
+		                dosyaolustur<<"\tBA ";
 		               
 					}
 					else if(o1.ortalama<=100&&o1.ortalama>=90)
 					{
 					
-		                dosyaolustur<<"  Harf notu : FF "<<"\n"<<endl;
+		                dosyaolustur<<"\tFF ";
 		                
 					}
 				    
-		    	
+		    
 		    		
 		    	}
 	   
@@ -376,8 +385,8 @@ int main(int argc, char** argv) {
 			
 		
 			else {
-				    cout<<"Girilen isimde ogrenci bulunamamistir."<<endl;
-				    break;
+				    cout<<"Girilen TC ile uyusan ogrenci bulunamamistir."<<endl;
+				    
 		    	}
 		}
 		         	dosyaoku.close();
@@ -393,30 +402,36 @@ int main(int argc, char** argv) {
 	 
 		if(secim==3){
 			
-			string isim;
+			string silinecektc;
 			
-			cout<<"Silmek istediginiz ogrencinin ismini giriniz : ";
-			cin>>isim;
+			cout<<"Silmek istediginiz ogrencinin TC kimlik numarasini giriniz : ";
+			cin>>silinecektc;
 			
 			ifstream dosyaoku("ogrenciler.txt");
 			
 			ofstream dosyaolustur("guncel.txt");
 			
-			string ad,ad1;
+			string TC1,TC2;
 			
 			while(!dosyaoku.eof()){
 				
-				getline(dosyaoku,ad);
-				ad1=ad.substr(0,isim.length());
+				getline(dosyaoku,TC1);
+				TC2=TC1.substr(0,silinecektc.length());
 				
-				if(ad1!=isim){
+				
+				if(TC2==silinecektc){
 					
-					dosyaolustur<<ad<<endl;
+					cout<<"Silme islemi gerceklesmistir."<<endl;
+				}
+				
+				else if(TC2!=silinecektc){
+					
+					dosyaolustur<<TC1<<endl;
 					
 				}
 			}
 			
-			cout<<"Silme islemi gerceklesmistir."<<endl;
+			
 			dosyaoku.close();
 			dosyaolustur.close();
 			
@@ -442,12 +457,13 @@ int main(int argc, char** argv) {
 			cout<<endl;
 		    cout<<"Personelin bilgilerini giriniz..."<<endl;
 		    
+		    
+		    cout<<"Personelin Tc kimlik numarasi : "<<endl;
+		    cin>>p.TC;
 		    cout<<"Personelin adi : "<<endl;
 		    cin>>p.personeladi;
 		    cout<<"Personelin soyadi : "<<endl;
 		    cin>>p.personelsoyadi;
-			cout<<"Personelin Tc kimlik numarasi : "<<endl;
-		    cin>>p.TC;
 		    cout<<"Personelin unvani : "<<endl;
 		    cin>>p.unvani;
 		    cout<<"Personel no : "<<endl;
@@ -461,7 +477,7 @@ int main(int argc, char** argv) {
 		    
 		    dosyaolustur2.open("personeller.txt",ios::app);
 		    
-		    dosyaolustur2<<p.personeladi<<"  "<<p.personelsoyadi<<"  Personelin TC kimlik numarasi : "<<p.TC;
+		    dosyaolustur2<<p.TC<<"  "<<p.personeladi<<"  "<<p.personelsoyadi;
 		    dosyaolustur2<<" Personelin unvani : "<<p.unvani<<" Personel no : "<<p.personelno;
 		    dosyaolustur2<<" Personelin dogum tarihi: "<<p.personeldogumtarihi<<" Personelin bolumu : "<<p.personelbolumu<<" Personelin ise baslama tarihi : "<<p.isebaslamatarihi<<endl;
 		    dosyaolustur2.close();
@@ -475,33 +491,33 @@ int main(int argc, char** argv) {
 		    	
 		   	
 			
-			string isim;
+			string guncelpersonel;
 			
-			cout<<"Guncellemek istediginiz personelin ismini giriniz : ";
-			cin>>isim;
+			cout<<"Guncellemek istediginiz personelin Tc kimlik numarasini giriniz : ";
+			cin>>guncelpersonel;
 			
 			ifstream dosyaoku("personeller.txt");
 			ofstream dosyaolustur("guncel.txt");
 			
-			string ad,ad1;
+			string tc1,tc2;
 			
 		    while(!dosyaoku.eof())
 		    {
 		    	personeller p1;
-		    	getline(dosyaoku,ad);
-		    	ad1=ad.substr(0,isim.length());
+		    	getline(dosyaoku,tc1);
+		    	tc2=tc1.substr(0,guncelpersonel.length());
 		    	
-		    	if(ad1==isim){
+		    	if(tc2==guncelpersonel){
 				
 		    	
-		    	cout<<"Personelin bilgilerini giriniz..."<<endl;
-		    
+		   	cout<<"Personelin bilgilerini giriniz..."<<endl;
+		   	
+		    cout<<"Personelin Tc kimlik numarasi : "<<endl;
+		    cin>>p1.TC;
 		    cout<<"Personelin adi : "<<endl;
 		    cin>>p1.personeladi;
 		    cout<<"Personelin soyadi : "<<endl;
 		    cin>>p1.personelsoyadi;
-			cout<<"Personelin Tc kimlik numarasi : "<<endl;
-		    cin>>p1.TC;
 		    cout<<"Personelin unvani : "<<endl;
 		    cin>>p1.unvani;
 		    cout<<"Personel no : "<<endl;
@@ -514,7 +530,7 @@ int main(int argc, char** argv) {
 		    cin>>p1.isebaslamatarihi;
 		    
 		    
-		    dosyaolustur<<p1.personeladi<<"  "<<p1.personelsoyadi<<"  Personelin TC kimlik numarasi : "<<p1.TC;
+		    dosyaolustur<<p1.TC<<" "<<p1.personeladi<<"  "<<p1.personelsoyadi;
 		    dosyaolustur<<" Personelin unvani : "<<p1.unvani<<" Personel no : "<<p1.personelno;
 		    dosyaolustur<<" Personelin dogum tarihi: "<<p1.personeldogumtarihi<<" Personelin bolumu : "<<p1.personelbolumu<<" Personelin ise baslama tarihi : "<<p1.isebaslamatarihi<<endl;
 		    
@@ -539,30 +555,33 @@ int main(int argc, char** argv) {
 			if(secim==6){
 			
 			
-			ifstream dosyaoku("personeller.txt");
+			
 		
-			string isim;
+			string personelsil;
 			
-			cout<<"Silmek istediginiz personelin ismini giriniz : ";
-			cin>>isim;
+			cout<<"Silmek istediginiz personelin TC kimlik numarasini giriniz : ";
+			cin>>personelsil;
 			
+			ifstream dosyaoku("personeller.txt");
 			ofstream dosyaolustur2("guncel.txt");
 			
-			string ad,ad1;
+			string tc1,tc2;
 			
 			while(!dosyaoku.eof()){
 				
-				getline(dosyaoku,ad);
-				ad1=ad.substr(0,isim.length());
+				getline(dosyaoku,tc1);
+				tc2=tc1.substr(0,personelsil.length());
 				
-				if(ad1!=isim){
+				if(tc2==personelsil){
+				  cout<<"Silme islemi gerceklesmistir."<<endl;
 					
-					dosyaolustur2<<ad<<endl;
-					
+				}
+				else if(tc2!=personelsil){
+					dosyaolustur<<tc1<<endl;
 				}
 			}
 			
-			cout<<"Silme islemi gerceklesmistir."<<endl;
+			
 			dosyaoku.close();
 			dosyaolustur2.close();
 			
@@ -608,212 +627,67 @@ int main(int argc, char** argv) {
 		}
 		
 		
-//		
-//		if(secim==7){     // Açıyor ama göstermiyor bir daha dene..
-//			
-//			string sorgulaogrenci;
-//			ogrenciler o;
-//			
-//			cout<<"Sorgulamak istediginiz ogrencinin ismini giriniz : ";
-//			cin>>sorgulaogrenci;
-//			
-//			ifstream dosyaoku("ogrenciler.txt");
-//			dosyaolustur.open("ogrenciler.txt");
-//			
-//			while(!dosyaoku.eof()){
-//				
-//				dosyaoku>>o.adi>>o.soyadi>>o.TCno>>o.bolumu>>o.dogumtarihi>>o.ogrencino>>o.kayittarihi>>o.dogumtarihi;
-//				
-//				if(sorgulaogrenci==o.adi)
-//				{
-//					cout<<"Ogrenci bilgileri "<<endl;
-//					
-//					cout<<"Ogencinin adi : "<<o.adi;
-//		            cout<<"Ogencinin soyadi : "<<o.soyadi;
-//		           	cout<<"Ogencinin Tc kimlik numarasi : "<<o.TCno;
-//		            cout<<"Ogencinin okul numarasi : "<<o.ogrencino;
-//		            cout<<"Ogencinin dogum tarihi : "<<o.dogumtarihi;
-//		            cout<<"Ogencinin bolumu : "<<o.bolumu;
-//		            cout<<"Ogencinin kayit tarihi : "<<o.kayittarihi;
-//		            
-//		            int derssayisi;
-//		            
-//		            for(int i=1;i<=derssayisi;i++)
-//		    {
-//		    	
-//		    		
-//		    		cout<<"Ders adi : "<<o.dersadi<<"   Vize notu :"<<o.vize<<"   1.kisa sinav notu :"<<o.kisasinav1;
-//		            cout<<"   2.kisa sinav notu : "<<o.kisasinav2<<"   Odev notu : "<<o.odev<<"   Final notu : "<<o.final<<"   Ortalama : "<<o.ortalama;
-//	
-//		    		
-//		    		if(o.ortalama<=39.99&&o.ortalama>=0)
-//		    		{
-//		    		    
-//		                cout<<"  Harf notu : FF ";
-//		    			
-//					}
-//					
-//					else if(o.ortalama<=49.99&&o.ortalama>=40)
-//					{
-//					
-//		                cout<<"  Harf notu : FD ";
-//
-//					}
-//					
-//					else if(o.ortalama<=54.99&&o.ortalama>=50)
-//					{
-//						
-//		                cout<<"  Harf notu : DD ";
-//		                
-//					}
-//					else if(o.ortalama<=65.99&&o.ortalama>=55)
-//					{
-//						
-//		                cout<<"  Harf notu : DC ";
-//		                
-//					}
-//					else if(o.ortalama<=70.99&&o.ortalama>=66)
-//					{
-//						
-//		                cout<<"  Harf notu : CC ";
-//		                
-//					}
-//					else if(o.ortalama<=74.99&&o.ortalama>=71)
-//					{
-//						
-//		                cout<<"  Harf notu : CB ";
-//		                
-//					}
-//					else if(o.ortalama<=82.99&&o.ortalama>=75)
-//					{
-//						
-//		                cout<<"  Harf notu : BB ";
-//		                
-//					}
-//					else if(o.ortalama<=89.99&&o.ortalama>=83)
-//					{
-//						
-//		                cout<<"  Harf notu : BA ";
-//		               
-//					}
-//					else if(o.ortalama<=100&&o.ortalama>=90)
-//					{
-//						
-//		                cout<<"  Harf notu : FF ";
-//		                
-//					}
-//				    
-//		    	
-//		    	dosyaoku.close();	
-//		            
-//		            
-//				}
-//			}
-//		}
-//}
 
 
 if(secim==7){
 	
 	string ogrencisorgula;
-	ifstream dosyaoku("ogrenciler.txt");
 	
-	cout<<"Sorgulamak istediginiz ogrencinin ismini giriniz"<<endl;
+	
+	cout<<"Sorgulamak istediginiz ogrencinin TC kimlik numarasini giriniz"<<endl;
 	cin>>ogrencisorgula;
 	
+	ifstream dosyaoku("ogrenciler.txt");
 
 	
 	while (!dosyaoku.eof()){
 		
-		dosyaoku>>o.adi>>o.soyadi>>o.TCno>>o.ogrencino>>o.dogumtarihi>>o.bolumu>>o.kayittarihi>>o.bolumu>>o.dersadi>>o.kisasinav1>>o.kisasinav2>>o.odev>>o.vize>>o.final>>o.ortalama;
+		dosyaoku>>o.TCno>>o.adi>>o.soyadi>>o.ogrencino>>o.dogumtarihi>>o.bolumu>>o.kayittarihi>>o.derssayisi;
 		
-	
-	    if(o.adi==ogrencisorgula){
+		
+		for(int i=1;i<=o.derssayisi;i++)	{
+			
+			
+			dosyaoku>>o.dersadi>>o.vize>>o.kisasinav1>>o.kisasinav2>>o.odev>>o.final>>o.ortalama>>o.harfnotu;
+		   
+			
+	 }
+	    if(o.TCno==ogrencisorgula){
 	    	
 	    	cout<<"Ogrencinin bilgileri"<<endl;
 	    	
+	    	cout<<"Ogencinin Tc kimlik numarasi : "<<o.TCno<<endl;
 	    	cout<<"Ogencinin adi : "<<o.adi<<endl;
 		    cout<<"Ogencinin soyadi : "<<o.soyadi<<endl;
-            cout<<"Ogencinin Tc kimlik numarasi : "<<o.TCno<<endl;
 		    cout<<"Ogencinin okul numarasi : "<<o.ogrencino<<endl;
 		    cout<<"Ogencinin dogum tarihi : "<<o.dogumtarihi<<endl;
 		    cout<<"Ogencinin bolumu : "<<o.bolumu<<endl;
 		    cout<<"Ogencinin kayit tarihi : "<<o.kayittarihi<<endl;
+		    cout<<"Ogrencinin aldigi ders sayisi : "<<o.derssayisi<<endl;
 		    
  
  
-		    		
-		    
-		    		cout<<"Ders adi : "<<o.dersadi<<"   Vize notu :"<<o.vize<<"   1.kisa sinav notu :"<<o.kisasinav1;
-		            cout<<"   2.kisa sinav notu : "<<o.kisasinav2<<"   Odev notu : "<<o.odev<<"   Final notu : "<<o.final<<"   Ortalama : "<<o.ortalama;
-		           
-		      
-		    		if(o.ortalama<=39.99&&o.ortalama>=0)
-		    		{
-		    		   
-		                cout<<"  Harf notu : FF ";
-		             
-		    			
-					}
-					
-					else if(o.ortalama<=49.99&&o.ortalama>=40)
-					{
-						
-		                cout<<"  Harf notu : FD ";
-		                
-					}
-					
-					else if(o.ortalama<=54.99&&o.ortalama>=50)
-					{
-						
-		                cout<<"  Harf notu : DD ";
-		               
-					}
-					else if(o.ortalama<=65.99&&o.ortalama>=55)
-					{
-					
-		                cout<<"  Harf notu : DC ";
-		               
-					}
-					else if(o.ortalama<=70.99&&o.ortalama>=66)
-					{
-						
-		                cout<<"  Harf notu : CC ";
-		              
-					}
-					else if(o.ortalama<=74.99&&o.ortalama>=71)
-					{
+		    	for(int i=1;i<=o.derssayisi;i++)	{
 			
-		                cout<<"  Harf notu : CB ";
-		        
-					}
-					else if(o.ortalama<=82.99&&o.ortalama>=75)
-					{
-						
-		                cout<<"  Harf notu : BB ";
-		                
-					}
-					else if(o.ortalama<=89.99&&o.ortalama>=83)
-					{
-					
-		                cout<<"  Harf notu : BA ";
-		             
-					}
-					else if(o.ortalama<=100&&o.ortalama>=90)
-					{
-						
-		                cout<<"  Harf notu : FF ";
-		                
-					}
-				    
 		    
-		  
-		    			    
-		    	dosyaoku.close();
-		    break;   
-    }	
-		   
-		    
+		    		cout<<"Ders adi : "<<o.dersadi<<endl;
+					cout<<"Vize notu :"<<o.vize<<endl;
+					cout<<"1.kisa sinav notu :"<<o.kisasinav1<<endl;
+		            cout<<"2.kisa sinav notu : "<<o.kisasinav2<<endl;
+					cout<<"Odev notu : "<<o.odev<<endl;
+					cout<<"Final notu : "<<o.final<<endl;
+					cout<<"Ortalama : "<<o.ortalama<<endl;
+					cout<<"Harf notu : "<<o.harfnotu<<endl;
+		           
+		            
+		    		
+					}
+				     dosyaoku.close();
+				     break;
+		           
+		    	}
+		  			    
+	    
 		     else{
         	cout<<"Aradiginiz ogrenci sistemde kayitli degildir."<<endl;
         	break;
@@ -823,60 +697,7 @@ if(secim==7){
 }
        
 
-		
-	/*	if(secim==7){
-			
-			ifstream dosyaoku("ogrenciler.txt");
-			string sorgulanacakisim;
-			
-			cout<<"Sorgulamak istediginiz ogrencinin ismini giriniz : "<<endl;
-			cin>>sorgulanacakisim;
-			
-			if(dosyaoku.is_open()){
-				
-				int x=0;
-				do{
-					ogrenciler o3;
-					dosyaoku>>o3.adi;
-					
-					if(o3.adi==sorgulanacakisim){
-						
-						cout<<o3.adi<<o3.soyadi;
-					}
-					}while(!dosyaoku.eof());
-					
-					dosyaoku.close();
-					
-					if(x=0)
-						cout<<"Dosyada kayitli ogrenci bulunamadi"<<endl;
-				}
-						else
-							cout<<"Dosya acilamadi.";
-				
-		}  //olmadıııııııııııııııı   */
 	
-	/*	if(secim==7){
-			
-			char sorgulanacakisim;
-			cout<<"Sorgulamak istediginiz ogrencinin ismini giriniz : "<<endl;
-			cin>>sorgulanacakisim;
-			
-			ifstream dosyaoku("ogrenciler.txt");
-			dosyaoku.open("ogrenciler.txt");
-			
-			char veri;
-			while(!dosyaoku.eof()){
-				dosyaoku.get(veri);
-				
-				if(veri==sorgulanacakisim)
-				{
-					cout<<"Aradiginiz ogrenci ''"<<veri<<"'bulundu."<<endl;
-				}
-			}
-			dosyaoku.close();
-			
-		}        dosyaoku da yazsam dosyaolusturda yazsam işe yaramadı          */
-
 		
 	}while(1==1);
 	
@@ -887,4 +708,4 @@ if(secim==7){
 	
 	system("PAUSE");
 	return 0;
-}
+}                                                                                                                                                                      
